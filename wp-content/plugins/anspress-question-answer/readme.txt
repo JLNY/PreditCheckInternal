@@ -3,8 +3,8 @@ Contributors: nerdaryan
 Donate link: https://www.paypal.me/anspress
 Tags: question, answer, q&a, forum, profile, stackoverflow, quora, buddypress
 Requires at least: 4.7
-Tested up to: 5.5
-Stable tag: 4.1.19
+Tested up to: 5.3
+Stable tag: 4.1.20
 License: GPLv2 or later
 Demo: https://anspress.net/demo/?product=anspress
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -97,6 +97,16 @@ Read the full FAQ here https://anspress.net/resources/faq/
 
 
 == Changelog ==
+
+= 4.1.20 = 
+
+* Fixed: wrong date time in get_adjacent_post query
+* Warning: Creating default object from empty value in wp-content/plugins/anspress-question-answer/includes/functions.php on line 2461 Fixes #550
+* Fixed: Uncaught Error Call to a member function has_cap() on bool
+* Fixed: Tags not being saved from frontend form
+* Disable cache for function ap_get_post
+* Improved question filters UI
+* Added condition for existence of index (#548)
 
 = 4.1.19 =
 
