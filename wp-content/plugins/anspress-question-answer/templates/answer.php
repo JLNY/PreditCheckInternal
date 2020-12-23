@@ -23,6 +23,7 @@ if ( ap_user_can_read_answer() ) :
 		<div class="ap-cell clearfix">
 			<div class="ap-cell-inner">
 				<div class="ap-q-metas">
+                    <span style="background: deepskyblue"><strong><?php echo ap_get_post_field('trueorfalse')?></strong></span>
 					<?php echo ap_user_display_name( [ 'html' => true ] ); ?>
 					<a href="<?php the_permalink(); ?>" class="ap-posted">
 						<time itemprop="datePublished" datetime="<?php echo ap_get_time( get_the_ID(), 'c' ); ?>">
