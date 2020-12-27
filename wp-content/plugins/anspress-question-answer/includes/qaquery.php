@@ -454,6 +454,9 @@ function ap_question_metas( $question_id = false ) {
 	if ( is_question() ) {
 		$last_active     = ap_get_last_active( get_question_id() );
 		$metas['active'] = '<i class="apicon-pulse"></i><i><time class="published updated" itemprop="dateModified" datetime="' . mysql2date( 'c', $last_active ) . '">' . $last_active . '</time></i>';
+
+	    $time_horizon = ap_get_post_field('horizon');
+	    $metas['horizon'] = '<i class="apicon-pulse"></i><i><time class="published updated">verification time: ' . $time_horizon . '</time></i>';
 	}
 
 	if ( ! is_question() ) {
