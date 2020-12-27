@@ -76,6 +76,14 @@ class AP_Form_Hooks
             );
         }
 
+        $form['fields']['time_horizon'] = array(
+            'type' => 'input',
+            'subtype' => 'datetime-local',
+            'order' => 2,
+            'label' => __('When to verify?', 'anspress-question-answer'),
+            'desc' => __('Please specify a date when this claim can be verified.', 'anspress-question-answer'),
+        );
+
         // Add name fields if anonymous is allowed.
         if (!is_user_logged_in() && ap_allow_anonymous()) {
             $form['fields']['anonymous_name'] = array(
@@ -413,6 +421,10 @@ class AP_Form_Hooks
         // If private override status.
         if (isset($values['is_private']['value']) && true === $values['is_private']['value']) {
             $question_args['post_status'] = 'private_post';
+        }
+
+        if (isset($values['time_horizon']['value'])) {
+            $question_args['meta_input']['horizon'] = $values['time_horizon']['value'];
         }
 
         // Create user if enabled.
