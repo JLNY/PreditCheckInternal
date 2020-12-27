@@ -243,6 +243,8 @@ class AP_Form_Hooks
         $form['fields']['trueorfalse'] = array(
             'type' => 'select',
             'label' => __('True or False', 'anspress-question-answer'),
+            'order' => 0,
+            'value' => 'amber',
             'options' => array(
                 'true' => __('True', 'anspress-question-answer'),
                 'amber' => __('Amber', 'anspress-question-answer'),
