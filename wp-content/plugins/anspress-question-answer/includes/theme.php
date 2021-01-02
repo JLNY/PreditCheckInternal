@@ -543,7 +543,7 @@ function ap_get_ask_btn() {
 	 */
 	$link = apply_filters( 'ap_ask_btn_link', $link );
 
-	return '<a class="ap-btn-ask" href="' . $link . '">' . __( 'Ask question', 'anspress-question-answer' ) . '</a>';
+	return '<a class="ap-btn-ask" href="' . $link . '">' . __( 'Post a Saying', 'anspress-question-answer' ) . '</a>';
 }
 
 /**

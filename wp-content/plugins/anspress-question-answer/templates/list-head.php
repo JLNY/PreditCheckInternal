@@ -29,7 +29,7 @@
 $questions_count = (int) get_user_meta( get_current_user_id(), '__ap_unpublished_questions', true );
 
 if ( $questions_count > 0 ) {
-	$text = sprintf( _n( '%d question is', '%d questions are', $questions_count, 'anspress-question-answer' ), $questions_count );
+	$text = sprintf( _n( '%d saying is', '%d sayings are', $questions_count, 'anspress-question-answer' ), $questions_count );
 
 	echo '<div class="ap-unpublished-alert ap-alert warning"><i class="apicon-pin"></i>';
 	printf(

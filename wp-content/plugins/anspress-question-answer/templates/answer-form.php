@@ -27,7 +27,7 @@ $ajax_query = wp_json_encode(
             <div class="ap-cell-inner">
                 <div class="ap-minimal-placeholder">
                     <div class="ap-dummy-editor"></div>
-                    <div class="ap-dummy-placeholder"><?php _e('Write your answer.', 'anspress-question-answer'); ?></div>
+                    <div class="ap-dummy-placeholder"><?php _e('Make your verification.', 'anspress-question-answer'); ?></div>
                     <div class="ap-editor-fade" ap="loadEditor" data-apquery="<?php echo esc_js($ajax_query); ?>"></div>
                 </div>
                 <div id="ap-form-main">
@@ -46,7 +46,7 @@ $ajax_query = wp_json_encode(
         <div id="ap-drop-area" class="ap-cell ap-form-c clearfix">
             <div class="ap-cell-inner">
                 <div class="ap-minimal-placeholder">
-                    <div class="ap-dummy-placeholder"><?php _e('Claim can be verified only after ' . get_post_meta(get_question_id(), 'horizon', true), 'anspress-question-answer'); ?></div>
+                    <div class="ap-dummy-placeholder"><?php _e('Saying can be verified only after ' . get_post_meta(get_question_id(), 'horizon', true), 'anspress-question-answer'); ?></div>
                 </div>
             </div>
         </div>

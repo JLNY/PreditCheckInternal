@@ -167,77 +167,77 @@ class Activity_Helper {
 		$defaults = array(
 			'new_q'               => array(
 				'ref_type' => 'question',
-				'verb'     => __( 'Asked question', 'anspress-question-answer' ),
+				'verb'     => __( 'posted saying', 'anspress-question-answer' ),
 				'icon'     => 'apicon-question',
 			),
 			'edit_q'              => array(
 				'ref_type' => 'question',
-				'verb'     => __( 'Edited question', 'anspress-question-answer' ),
+				'verb'     => __( 'edited saying', 'anspress-question-answer' ),
 				'icon'     => 'apicon-pencil',
 			),
 			'new_a'               => array(
 				'ref_type' => 'answer',
-				'verb'     => __( 'Answered question', 'anspress-question-answer' ),
+				'verb'     => __( 'post verification', 'anspress-question-answer' ),
 				'icon'     => 'apicon-answer',
 			),
 			'edit_a'              => array(
 				'ref_type' => 'answer',
-				'verb'     => __( 'Edited answer', 'anspress-question-answer' ),
+				'verb'     => __( 'edited verification', 'anspress-question-answer' ),
 				'icon'     => 'apicon-answer',
 			),
 			'status_publish'      => array(
 				'ref_type' => 'post',
-				'verb'     => __( 'Changed status to publish', 'anspress-question-answer' ),
+				'verb'     => __( 'changed status to publish', 'anspress-question-answer' ),
 				'icon'     => 'apicon-flag',
 			),
 			'status_future'       => array(
 				'ref_type' => 'post',
-				'verb'     => __( 'Changed publish date to future', 'anspress-question-answer' ),
+				'verb'     => __( 'changed publish date to future', 'anspress-question-answer' ),
 				'icon'     => 'apicon-flag',
 			),
 			'status_moderate'     => array(
 				'ref_type' => 'post',
-				'verb'     => __( 'Changed status to moderate', 'anspress-question-answer' ),
+				'verb'     => __( 'changed status to moderate', 'anspress-question-answer' ),
 				'icon'     => 'apicon-flag',
 			),
 			'status_private_post' => array(
 				'ref_type' => 'post',
-				'verb'     => __( 'Changed visibility to private', 'anspress-question-answer' ),
+				'verb'     => __( 'changed visibility to private', 'anspress-question-answer' ),
 				'icon'     => 'apicon-flag',
 			),
 			'status_trash'        => array(
 				'ref_type' => 'post',
-				'verb'     => __( 'Trashed', 'anspress-question-answer' ),
+				'verb'     => __( 'trashed', 'anspress-question-answer' ),
 				'icon'     => 'apicon-trashcan',
 			),
 			'featured'            => array(
 				'ref_type' => 'question',
-				'verb'     => __( 'Marked as featured question', 'anspress-question-answer' ),
+				'verb'     => __( 'marked as featured question', 'anspress-question-answer' ),
 				'icon'     => 'apicon-star',
 			),
 			'closed_q'            => array(
 				'ref_type' => 'question',
-				'verb'     => __( 'Marked as closed', 'anspress-question-answer' ),
+				'verb'     => __( 'marked as closed', 'anspress-question-answer' ),
 				'icon'     => 'apicon-alert',
 			),
 			'new_c'               => array(
 				'ref_type' => 'comment',
-				'verb'     => __( 'Posted new comment', 'anspress-question-answer' ),
+				'verb'     => __( 'posted new comment', 'anspress-question-answer' ),
 				'icon'     => 'apicon-comments',
 			),
 			'edit_c'              => array(
 				'ref_type' => 'comment',
-				'verb'     => __( 'Edited comment', 'anspress-question-answer' ),
+				'verb'     => __( 'edited comment', 'anspress-question-answer' ),
 				'icon'     => 'apicon-comments',
 			),
 			'selected'            => array(
 				'ref_type' => 'answer',
-				'verb'     => __( 'Selected answer as best', 'anspress-question-answer' ),
+				'verb'     => __( 'selected verification as best', 'anspress-question-answer' ),
 				'icon'     => 'apicon-check',
 			),
 			'unselected'          => array(
 				'ref_type' => 'answer',
-				'verb'     => __( 'Unselected an answer', 'anspress-question-answer' ),
+				'verb'     => __( 'unselected an verification', 'anspress-question-answer' ),
 				'icon'     => 'apicon-check',
 			),
 		);
