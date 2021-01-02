@@ -30,7 +30,7 @@
 <?php else : ?>
 
 	<p class="ap-no-questions">
-		<?php esc_attr_e( 'There are no questions matching your query or you do not have permission to read them.', 'anspress-question-answer' ); ?>
+		<?php esc_attr_e( 'There are no saying matching your query or you do not have permission to read them.', 'anspress-question-answer' ); ?>
 	</p>
 
 	<?php ap_get_template_part( 'login-signup' ); ?>

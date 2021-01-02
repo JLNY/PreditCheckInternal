@@ -24,8 +24,9 @@
   <component name="ChangeListManager">
     <list default="true" id="849ade2d-70d0-4051-baae-a6e738c7f9dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-config.local.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-config.local.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-config.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/plugins/anspress-question-answer/templates/answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/anspress-question-answer/templates/answer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/anspress-question-answer/includes/class-form-hooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/anspress-question-answer/includes/class-form-hooks.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,10 +145,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606275331960" />
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608695595444">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1609026918890">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1608695595444" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606275475669" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609026918890" />
   </component>
 </project>
