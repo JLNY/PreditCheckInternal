@@ -351,6 +351,7 @@ function ap_post_actions( $_post = null ) {
  * @since   2.0
  */
 function ap_post_actions_buttons() {
+    return;
 	if ( ! is_user_logged_in() ) {
 		return;
 	}
@@ -780,6 +781,7 @@ function ap_list_filters( $current_url = '' ) {
  * @return string
  */
 function ap_select_answer_btn_html( $_post = null ) {
+    return;
 
 	if ( ! ap_user_can_select_answer( $_post ) ) {
 		return;
