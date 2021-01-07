@@ -90,10 +90,6 @@ class AnsPress_BasePage_Shortcode {
 			ap_page( $this->current_page );
 
 		echo '</div>';
-		// Linkback to author.
-		if ( ! ap_opt( 'author_credits' ) ) {
-			echo '<div class="ap-cradit">' . esc_attr__( 'Question and answer is powered by', 'anspress-question-answer' ) . ' <a href="https://anspress.net" target="_blank">anspress.net</a></div>';
-		}
 
 		wp_reset_postdata();
 		$ap_shortcode_loaded = false;
