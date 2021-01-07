@@ -40,7 +40,7 @@ $icon = ap_get_category_icon( $question_category->term_id );
 					<span class="ap-tax-count">
 						<?php
 							printf(
-								_n( '%d Question', '%d Questions', (int) $question_category->count, 'anspress-question-answer' ),
+								_n( '%d Saying', '%d Sayings', (int) $question_category->count, 'anspress-question-answer' ),
 								(int) $question_category->count
 							);
 						?>
@@ -59,7 +59,7 @@ $icon = ap_get_category_icon( $question_category->term_id );
 
 				if ( $sub_cat_count > 0 ) {
 					echo '<div class="ap-term-sub">';
-					echo '<div class="sub-taxo-label">' . $sub_cat_count . ' ' . __( 'Sub Categories', 'anspress-question-answer' ) . '</div>';
+					echo '<div class="sub-taxo-label">' . $sub_cat_count . ' ' . __( 'People/Entities', 'anspress-question-answer' ) . '</div>';
 					ap_sub_category_list( $question_category->term_id );
 					echo '</div>';
 				}

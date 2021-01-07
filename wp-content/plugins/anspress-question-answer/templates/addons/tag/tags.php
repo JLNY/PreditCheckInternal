@@ -36,7 +36,7 @@
 						<span class="ap-tagq-count">
 							<?php
 								printf(
-									_n( '%d Question', '%d Questions', $tag->count, 'anspress-question-answer' ),
+									_n( '%d Saying', '%d Sayings', $tag->count, 'anspress-question-answer' ),
 									$tag->count
 								);
 							?>
