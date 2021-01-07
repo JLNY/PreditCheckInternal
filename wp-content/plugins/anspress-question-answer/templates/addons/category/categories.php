@@ -30,7 +30,7 @@ global $question_categories;
 								<span class="ap-term-count">
 									<?php
 										printf(
-											_n( '%d Question', '%d Questions', $category->count, 'anspress-question-answer' ),
+											_n( '%d Saying', '%d Sayings', $category->count, 'anspress-question-answer' ),
 											(int) $category->count
 										);
 									?>

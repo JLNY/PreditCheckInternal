@@ -112,7 +112,7 @@ function ap_sub_category_list( $parent ) {
 	if ( $categories ) {
 		echo '<ul class="ap-category-subitems ap-ul-inline clearfix">';
 		foreach ( $categories as $cat ) {
-			echo '<li><a href="' . get_category_link( $cat ) . '">' . $cat->name . '<span>(' . $cat->count . ')</span></a></li>';
+			echo '<li><a href="' . get_category_link( $cat ) . '">' . $cat->name . '<span>(' . $cat->count . ')</span><span style="background: lightskyblue">' . get_field('entity_score', $cat) . '</span></a></li>';
 		}
 		echo '</ul>';
 	}
