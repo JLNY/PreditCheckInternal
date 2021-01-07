@@ -53,7 +53,7 @@ global $question_categories;
 										<?php
 											printf(
 												// Translators: %d contains count of sub category.
-												_n( '%d Entity', '%d Entities', (int) $sub_cat_count, 'anspress-question-answer' ),
+												_n( '%d People/Entity', '%d People/Entities', (int) $sub_cat_count, 'anspress-question-answer' ),
 												(int) $sub_cat_count
 											);
 										?>
