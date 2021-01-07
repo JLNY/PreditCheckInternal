@@ -557,6 +557,10 @@ if ( ! class_exists( 'AnsPress_Init' ) ) {
 			 */
 			do_action( 'before_loading_anspress' );
 			anspress()->setup_hooks();
+            add_action( 'bl_cron_hook_entity_score_aggregate', 'bl_cron_entity_score_aggregate' );
+            if ( ! wp_next_scheduled( 'bl_cron_hook_entity_score_aggregate' ) ) {
+                wp_schedule_event( time(), 'five_seconds', 'bl_cron_hook_entity_score_aggregate' );
+            }
 		}
 
 		/**

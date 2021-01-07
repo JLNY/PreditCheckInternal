@@ -2483,3 +2483,15 @@ function ap_remove_all_filters( $tag, $priority = false ) {
 
 	return true;
 }
+
+function bl_cron_entity_score_aggregate(){
+    $categories = get_terms(
+        array( 'taxonomy' => 'question_category' ), array(
+            'parent'     => $question_categories->term_id,
+            'hide_empty' => false,
+        )
+    );
+    foreach($categories as $cat){
+        update_term_meta($cat, 'entity_score', 81);
+    }
+}
