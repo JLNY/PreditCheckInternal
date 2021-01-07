@@ -536,6 +536,7 @@ function ap_ask_btn() {
  */
 function ap_get_ask_btn() {
 	$link = ap_get_link_to( 'ask' );
+    bl_cron_entity_score_aggregate();
 
 	/**
 	 * Filter ask button link.
