@@ -24,6 +24,9 @@ if ( ! defined( 'WPINC' ) ) {
  * @since  0.1
  */
 function ap_opt( $key = false, $value = null ) {
+	if($key === 'max_upload_size' && $value === null){
+		return 20*1024*1024; // temp hard code to 20M
+	}
 	$settings = wp_cache_get( 'anspress_opt', 'ap' );
 
 	if ( false === $settings ) {
@@ -121,7 +124,7 @@ function ap_default_options() {
 		'uploads_per_post'              => 4,
 		'question_page_slug'            => 'question',
 		'question_page_permalink'       => 'question_perma_1',
-		'max_upload_size'               => 500000,
+		'max_upload_size'               => 50*1024*1024,
 		'disable_down_vote_on_question' => false,
 		'disable_down_vote_on_answer'   => false,
 		'show_solved_prefix'            => true,
