@@ -401,8 +401,8 @@ class Categories extends \AnsPress\Singleton {
 		$category_id = ap_sanitize_unslash( 'category', 'r' );
 
 		$form['fields']['category'] = array(
-			'label'    => __( 'Category', 'anspress-question-answer' ),
-			'desc'     => __( 'Select a topic that best fits your question.', 'anspress-question-answer' ),
+			'label'    => __( 'People/Entity', 'anspress-question-answer' ),
+			'desc'     => __( 'Select a people/entity that makes this saying.', 'anspress-question-answer' ),
 			'type'     => 'select',
 			'options'  => 'terms',
 			'order'    => 2,
@@ -455,7 +455,7 @@ class Categories extends \AnsPress\Singleton {
 		} elseif ( is_question_category() ) {
 			$category     = get_queried_object();
 			$navs['page'] = array(
-				'title' => __( 'Categories', 'anspress-question-answer' ),
+				'title' => __( 'People/Entity', 'anspress-question-answer' ),
 				'link'  => ap_get_link_to( 'categories' ),
 				'order' => 8,
 			);
@@ -467,7 +467,7 @@ class Categories extends \AnsPress\Singleton {
 			);
 		} elseif ( is_question_categories() ) {
 			$navs['page'] = array(
-				'title' => __( 'Categories', 'anspress-question-answer' ),
+				'title' => __( 'People/Entities', 'anspress-question-answer' ),
 				'link'  => ap_get_link_to( 'categories' ),
 				'order' => 8,
 			);
@@ -508,7 +508,7 @@ class Categories extends \AnsPress\Singleton {
 
 		if ( ! isset( $wp->query_vars['ap_categories'] ) && ! is_question_category() ) {
 			$filters['category'] = array(
-				'title'    => __( 'Category', 'anspress-question-answer' ),
+				'title'    => __( 'People/Entity', 'anspress-question-answer' ),
 				'items'    => [],
 				'search'   => true,
 				'multiple' => true,
