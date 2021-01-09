@@ -59,7 +59,7 @@ class AP_Form_Hooks
                     'type' => 'editor',
                     'label' => __('Description', 'anspress-question-answer'),
                     'min_length' => ap_opt('minimum_question_length'),
-                    'validate' => 'required,min_string_length,badwords',
+                    'validate' => 'badwords',
                     'editor_args' => array(
                         'quicktags' => ap_opt('question_text_editor') ? true : false,
                     ),
