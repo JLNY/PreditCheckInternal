@@ -536,7 +536,6 @@ function ap_ask_btn() {
  */
 function ap_get_ask_btn() {
 	$link = ap_get_link_to( 'ask' );
-    bl_cron_entity_score_aggregate();
 
 	/**
 	 * Filter ask button link.
@@ -926,7 +925,7 @@ function ap_subscribe_btn( $_post = false, $echo = true ) {
 	);
 	$subscribers = (int) ap_get_post_field( 'subscribers', $_post );
 	$subscribed  = ap_is_user_subscriber( 'question', $_post->ID );
-	$label       = $subscribed ? __( 'Unsubscribe', 'anspress-question-answer' ) : __( 'Subscribe', 'anspress-question-answer' );
+	$label       = $subscribed ? __( 'Liked', 'anspress-question-answer' ) : __( 'Like', 'anspress-question-answer' );
 
 	$html = '<a href="#" class="ap-btn ap-btn-subscribe ap-btn-small ' . ( $subscribed ? 'active' : '' ) . '" apsubscribe apquery="' . esc_js( $args ) . '">' . esc_attr( $label ) . '<span class="apsubscribers-count">' . esc_attr( $subscribers ) . '</span></a>';
 

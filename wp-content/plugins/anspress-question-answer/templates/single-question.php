@@ -40,7 +40,7 @@
 			?>
 			<div ap="question" apid="<?php the_ID(); ?>">
 				<div id="question" role="main" class="ap-content">
-					<div class="ap-single-vote"><?php ap_vote_btn(); ?></div>
+					<!--<div class="ap-single-vote"><?php ap_vote_btn(); ?></div>-->
 					<?php
 					/**
 					 * Action triggered before question title.
