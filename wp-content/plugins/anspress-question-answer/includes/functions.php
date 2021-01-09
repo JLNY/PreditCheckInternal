@@ -2484,14 +2484,19 @@ function ap_remove_all_filters( $tag, $priority = false ) {
 	return true;
 }
 
-function bl_cron_entity_score_aggregate(){
-    $categories = get_terms(
-        array( 'taxonomy' => 'question_category' ), array(
-            'parent'     => $question_categories->term_id,
-            'hide_empty' => false,
-        )
-    );
-    foreach($categories as $cat){
-        update_term_meta($cat, 'entity_score', 81);
+function ap_entityscore_agg_cron() {
+    $categories = get_terms(array('taxonomy' => 'question_category'));
+    foreach ( $categories as $cat ) {
+        $question_args = array(
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'question_category',
+                    'field'    => 'id',
+                    'terms'    => $cat->term_id,
+                ),
+            ),
+        );
+        $questions = ap_get_questions($question_args);
+        update_field('entity_score', 80+count($questions->get_questions()), $cat);
     }
 }
