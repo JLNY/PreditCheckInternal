@@ -32,7 +32,8 @@ Text Domain: genesis-sample
 	- Screen Reader Text
 - Structure and Layout
 	- Site Container
-	- Site Inner
+  - Site Inner
+  - Hot People Section
 - Common Classes
 	- Avatar
 	- Genesis
@@ -737,7 +738,28 @@ th:first-child {
 .site-inner {
   clear: both;
   margin: 0 auto;
-  padding: 60px 30px 0;
+  /*padding: 60px 30px 0;*/
+}
+
+/* Hot People
+--------------------------------------------- */
+.hot-people-tile {
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.hot-people-tile img {
+  height: 100%;
+  width: auto;
+}
+
+/* Hot People
+--------------------------------------------- */
+.hot-verification-item {
+  border: 1px solid lightblue;
 }
 
 /* Common Classes
@@ -1132,16 +1154,20 @@ img.alignright,
 .site-secondary-header {
   top: 70px;
   left: 0;
-  max-width: 1140px;
+  max-width: 1080px;
   width: 100%;
   background-color: #fff;
-  padding: 0 100px;
   margin: 0 auto;
   height: 40px;
   color: white;
   user-select: none;
   display: flex;
   justify-content: space-between;
+}
+
+.site-secondary-header a {
+  text-decoration: none;
+  color: black;
 }
 
 /* Title Area
@@ -1419,6 +1445,14 @@ img.alignright,
 .content .sticky {
   background-color: #f5f5f5;
   padding: 30px;
+}
+
+.hot-people-section {
+  width: 100%;
+  height: 64px;
+  padding: 2px;
+  margin: auto;
+  background-color: lightblue;
 }
 
 /* Entry Meta
