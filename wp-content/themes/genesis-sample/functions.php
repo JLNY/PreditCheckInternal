@@ -337,34 +337,34 @@ function generate_hot_people_section()
                 'hide_empty' => false,
             ));
             foreach ($sub_categories as $sub_cat) {
-                for ($i = 0; $i < 18; $i++) {
-                    # code...
+                //for ($i = 0; $i < 18; $i++) {
+                # code...
 
-                    $cat_image = get_term_meta($sub_cat->term_id, 'ap_category', true);
-                    $cat_image = wp_parse_args(
-                        $cat_image, array(
-                            'image' => [
-                                'url' => '',
-                            ],
-                        )
-                    );
+                $cat_image = get_term_meta($sub_cat->term_id, 'ap_category', true);
+                $cat_image = wp_parse_args(
+                    $cat_image, array(
+                        'image' => [
+                            'url' => '',
+                        ],
+                    )
+                );
 
-                    genesis_markup([
-                        'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('hot-people-tile'), "/preditcheck/questions/categories/" . $sub_cat->slug),
-                        'echo' => true,
-                    ]);
+                genesis_markup([
+                    'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('hot-people-tile'), "/preditcheck/questions/categories/" . $sub_cat->slug),
+                    'echo' => true,
+                ]);
 
-                    genesis_markup([
-                        'open' => sprintf('<img src="%s" alt="%s">', $cat_image['image']['url'], $sub_cat->name),
-                        'close' => '</img>',
-                        'echo' => true,
-                    ]);
+                genesis_markup([
+                    'open' => sprintf('<img src="%s" alt="%s">', $cat_image['image']['url'], $sub_cat->name),
+                    'close' => '</img>',
+                    'echo' => true,
+                ]);
 
-                    genesis_markup([
-                        'close' => '</a></div>',
-                        'echo' => true,
-                    ]);
-                }
+                genesis_markup([
+                    'close' => '</a></div>',
+                    'echo' => true,
+                ]);
+                //}
 
                 //echo '<img src="' . $post_thumbnail_img[0] . '" alt="' . $sub_cat->name . '" />';
                 //category_list_item($sub_cat);
@@ -570,4 +570,47 @@ function get_prediction_content_from_verification($verification_post)
 {
     $prediction = get_post(wp_get_post_parent_id($verification_post));
     return $prediction->post_content;
+}
+
+function get_people_image_from_verification($verification_post)
+{
+    $prediction = get_post(wp_get_post_parent_id($verification_post));
+    $cats = wp_get_post_terms($prediction->ID, 'question_category');
+    $taxos = array_filter($cats, function ($v, $k) {
+        return $v->category_parent == 0;
+    }, ARRAY_FILTER_USE_BOTH);
+    $people = $taxos[0];
+    $cat_image = get_term_meta($people->term_id, 'ap_category', true);
+    $cat_image = wp_parse_args(
+        $cat_image, array(
+            'image' => [
+                'url' => '',
+            ],
+        )
+    );
+    genesis_markup([
+        'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('people-pic'), "/preditcheck/questions/categories/" . $people->slug),
+        'echo' => true,
+    ]);
+
+    genesis_markup([
+        'open' => sprintf('<img src="%s" alt="%s">', $cat_image['image']['url'], $people->name),
+        'close' => '</img>',
+        'echo' => true,
+    ]);
+
+    genesis_markup([
+        'close' => '</a></div>',
+        'echo' => true,
+    ]);
+}
+
+function get_verification_trueorfalse_from_verification($verification_post)
+{
+    $verification_trueorfalse = get_post_meta($verification_post->ID, 'trueorfalse');
+    if (count($verification_trueorfalse) != 1) {
+        return "Amber";
+    }
+    $verification_trueorfalse = $verification_trueorfalse[0];
+    return ucwords($verification_trueorfalse);
 }
