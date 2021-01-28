@@ -61,6 +61,7 @@ Text Domain: genesis-sample
 - Sidebar
 - Footer Widgets
 - Site Footer
+- Bottom Menu
 - Media Queries
 	- Min-width: 960px
 		- Site Header
@@ -74,7 +75,8 @@ Text Domain: genesis-sample
 		- After Entry
 		- Column Classes
 		- Entry Misc.
-		- Footer Widgets
+    - Footer Widgets
+    - Bottom Menu
 - Print Styles
 */
 
@@ -779,9 +781,9 @@ th:first-child {
 
 .people-pic {
   display: inline-flex;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
   overflow: hidden;
 }
 
@@ -1207,7 +1209,6 @@ img.alignright,
   background-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   padding: 0 30px;
-  height: 110px;
 }
 
 .site-secondary-header {
@@ -1629,6 +1630,7 @@ p.entry-meta {
 .sidebar {
   font-size: 16px;
   line-height: 1.5;
+  display: none;
 }
 
 .sidebar .widget {
@@ -1679,6 +1681,17 @@ p.entry-meta {
 
 .site-footer p {
   margin-bottom: 0;
+}
+
+/* Bottom Menu
+---------------------------------------------------------------------------- */
+
+.bottom-menu {
+  background-color: lightblue;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
 }
 
 /* Media Queries
@@ -1815,6 +1828,7 @@ p.entry-meta {
   .sidebar {
     float: right;
     width: 30%;
+    display: block;
   }
 
   .sidebar-content .sidebar {
@@ -1920,6 +1934,19 @@ p.entry-meta {
     float: left;
     margin-bottom: 0;
     width: calc(100% / 3);
+  }
+
+  .people-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+  }
+
+  /* Bottom Menu
+  ---------------------------------------------------------------------------- */
+
+  .bottom-menu {
+    display: none;
   }
 }
 

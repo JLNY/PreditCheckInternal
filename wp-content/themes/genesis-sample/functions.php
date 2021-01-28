@@ -614,3 +614,25 @@ function get_verification_trueorfalse_from_verification($verification_post)
     $verification_trueorfalse = $verification_trueorfalse[0];
     return ucwords($verification_trueorfalse);
 }
+
+add_action('wp_footer', 'genesis_bottom_menu', 13);
+function genesis_bottom_menu()
+{
+    $header_open = genesis_markup(
+        [
+            'open' => sprintf("<div %s>", genesis_attr('bottom-menu')),
+            'context' => 'bottom-menu',
+            'echo' => true,
+        ]
+    );
+
+    $header_close = genesis_markup(
+        [
+            'close' => '</div>',
+            'context' => 'bottom-menu',
+            'echo' => true,
+        ]
+    );
+
+    //return $header_open . $categorie_headers . $header_close;
+}
