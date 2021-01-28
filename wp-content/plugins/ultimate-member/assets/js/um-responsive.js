@@ -1,6 +1,5 @@
 jQuery( window ).on( 'load',function() {
 	um_responsive();
-	alert('responsive');
 	um_modal_responsive();
 });
 

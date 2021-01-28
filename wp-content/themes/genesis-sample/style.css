@@ -802,6 +802,16 @@ th:first-child {
   font-size: 16px;
 }
 
+.prediction-content img {
+  max-height: 300px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+  object-position: top;
+}
+
 .verification {
   width: 100%;
   border: 1px solid lightskyblue;
@@ -821,6 +831,16 @@ th:first-child {
 
 .verification-author {
   font-weight: bold;
+}
+
+.verification-content img {
+  max-height: 300px;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+  object-position: top;
 }
 
 /* Common Classes
