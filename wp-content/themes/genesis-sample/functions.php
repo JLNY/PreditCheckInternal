@@ -304,7 +304,7 @@ function genesis_secondary_header()
 function category_list_item($cat)
 {
     $category_list_item_open = genesis_markup([
-        'open' => sprintf("<a href=\"%s\">", "/preditcheck/questions/categories/" . $cat->slug),
+        'open' => sprintf("<a href=\"%s\">", "/questions/categories/" . $cat->slug),
         'close' => '</a>',
         'content' => $cat->name,
         'echo' => true,
@@ -350,7 +350,7 @@ function generate_hot_people_section()
                 );
 
                 genesis_markup([
-                    'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('hot-people-tile'), "/preditcheck/questions/categories/" . $sub_cat->slug),
+                    'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('hot-people-tile'), "/questions/categories/" . $sub_cat->slug),
                     'echo' => true,
                 ]);
 
@@ -557,7 +557,12 @@ function get_people_from_verification($verification_post)
         return $v->category_parent == 0;
     }, ARRAY_FILTER_USE_BOTH);
     $people = $taxos[0];
-    return $people->name;
+    genesis_markup([
+        'open' => sprintf("<div %s><a href=\"%s\">%s", genesis_attr('people-name'), "/questions/categories/" . $people->slug, $people->name),
+        'close' => '</a></div>',
+        'echo' => true,
+    ]);
+    //return $people->name;
 }
 
 function get_prediction_title_from_verification($verification_post)
@@ -569,7 +574,12 @@ function get_prediction_title_from_verification($verification_post)
 function get_prediction_content_from_verification($verification_post)
 {
     $prediction = get_post(wp_get_post_parent_id($verification_post));
-    return $prediction->post_content;
+    genesis_markup([
+        'open' => sprintf("<div %s><a href=\"%s\">%s", genesis_attr('prediction-content'), "/questions/prediction/" . $prediction->post_name, $prediction->post_content),
+        'close' => '</a></div>',
+        'echo' => true,
+    ]);
+    //return $prediction->post_content;
 }
 
 function get_people_image_from_verification($verification_post)
@@ -589,7 +599,7 @@ function get_people_image_from_verification($verification_post)
         )
     );
     genesis_markup([
-        'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('people-pic'), "/preditcheck/questions/categories/" . $people->slug),
+        'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('people-pic'), "/questions/categories/" . $people->slug),
         'echo' => true,
     ]);
 
