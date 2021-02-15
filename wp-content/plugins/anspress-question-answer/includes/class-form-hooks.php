@@ -38,15 +38,15 @@ class AP_Form_Hooks
         $editing_id = ap_sanitize_unslash('id', 'r');
 
         $form = array(
-            'submit_label' => __('Submit Saying', 'anspress-question-answer'),
+            'submit_label' => __('Submit Prediction', 'anspress-question-answer'),
             'fields' => array(
                 'post_title' => array(
                     'type' => 'input',
                     'label' => __('Title', 'anspress-question-answer'),
-                    'desc' => __('Saying in one sentence', 'anspress-question-answer'),
+                    'desc' => __('Prediction in one sentence', 'anspress-question-answer'),
                     'attr' => array(
                         'autocomplete' => 'off',
-                        'placeholder' => __('Saying title', 'anspress-question-answer'),
+                        'placeholder' => __('Prediction title', 'anspress-question-answer'),
                         'data-action' => 'suggest_similar_questions',
                         'data-loadclass' => 'q-title',
                     ),
@@ -81,7 +81,7 @@ class AP_Form_Hooks
             'subtype' => 'datetime-local',
             'order' => 2,
             'label' => __('When to verify?', 'anspress-question-answer'),
-            'desc' => __('Please specify a date when this saying can be verified.', 'anspress-question-answer'),
+            'desc' => __('Please specify a date when this prediction can be verified.', 'anspress-question-answer'),
         );
 
         $form['fields']['prediction_time'] = array(
@@ -147,7 +147,7 @@ class AP_Form_Hooks
 
             $form['editing'] = true;
             $form['editing_id'] = $editing_id;
-            $form['submit_label'] = __('Update Saying', 'anspress-question-answer');
+            $form['submit_label'] = __('Update Prediction', 'anspress-question-answer');
             $form['fields']['post_title']['value'] = $question->post_title;
             $form['fields']['post_content']['value'] = $question->post_content;
             $form['fields']['is_private']['value'] = 'private_post' === $question->post_status ? true : false;
