@@ -38,15 +38,15 @@ class AP_Form_Hooks
         $editing_id = ap_sanitize_unslash('id', 'r');
 
         $form = array(
-            'submit_label' => __('Submit Saying', 'anspress-question-answer'),
+            'submit_label' => __('Submit Prediction', 'anspress-question-answer'),
             'fields' => array(
                 'post_title' => array(
                     'type' => 'input',
                     'label' => __('Title', 'anspress-question-answer'),
-                    'desc' => __('Saying in one sentence', 'anspress-question-answer'),
+                    'desc' => __('Prediction in one sentence', 'anspress-question-answer'),
                     'attr' => array(
                         'autocomplete' => 'off',
-                        'placeholder' => __('Saying title', 'anspress-question-answer'),
+                        'placeholder' => __('Prediction title', 'anspress-question-answer'),
                         'data-action' => 'suggest_similar_questions',
                         'data-loadclass' => 'q-title',
                     ),
@@ -81,7 +81,15 @@ class AP_Form_Hooks
             'subtype' => 'datetime-local',
             'order' => 2,
             'label' => __('When to verify?', 'anspress-question-answer'),
-            'desc' => __('Please specify a date when this saying can be verified.', 'anspress-question-answer'),
+            'desc' => __('Please specify a date when this prediction can be verified.', 'anspress-question-answer'),
+        );
+
+        $form['fields']['prediction_time'] = array(
+            'type' => 'input',
+            'subtype' => 'datetime-local',
+            'order' => 2,
+            'label' => __('When this prediction was made?', 'anspress-question-answer'),
+            'desc' => __('Please specify a date when this prediction was made.', 'anspress-question-answer'),
         );
 
         // Add name fields if anonymous is allowed.
@@ -139,7 +147,7 @@ class AP_Form_Hooks
 
             $form['editing'] = true;
             $form['editing_id'] = $editing_id;
-            $form['submit_label'] = __('Update Saying', 'anspress-question-answer');
+            $form['submit_label'] = __('Update Prediction', 'anspress-question-answer');
             $form['fields']['post_title']['value'] = $question->post_title;
             $form['fields']['post_content']['value'] = $question->post_content;
             $form['fields']['is_private']['value'] = 'private_post' === $question->post_status ? true : false;
@@ -417,7 +425,7 @@ class AP_Form_Hooks
         // Set post parent.
         $post_parent = ap_sanitize_unslash('post_parent', 'r');
         if (!empty($post_parent) && wp_verify_nonce(ap_sanitize_unslash('__nonce_pp', 'r'), 'post_parent_' . $post_parent)) {
-            $question_args['post_parent'] = (int)$post_parent;
+            $question_args['post_parent'] = (int) $post_parent;
         }
 
         // If private override status.
@@ -427,6 +435,10 @@ class AP_Form_Hooks
 
         if (isset($values['time_horizon']['value'])) {
             $question_args['meta_input']['horizon'] = $values['time_horizon']['value'];
+        }
+
+        if (isset($values['prediction_time']['value'])) {
+            $question_args['meta_input']['prediction_time'] = $values['prediction_time']['value'];
         }
 
         // Create user if enabled.
@@ -498,7 +510,7 @@ class AP_Form_Hooks
                         'success' => false,
                         'snackbar' => array(
                             'message' => sprintf(
-                            // Translators: placeholder contain error message.
+                                // Translators: placeholder contain error message.
                                 __('Unable to post question. Error: %s', 'anspress-question-answer'),
                                 $post_id->get_error_message()
                             ),
@@ -652,11 +664,10 @@ class AP_Form_Hooks
             $answer_args['post_status'] = 'private_post';
         }
 
-        error_log(print_r($values, TRUE));
-        if ( isset( $values['trueorfalse']['value'] )) {
-            $answer_args['meta_input']['trueorfalse'] =  $values['trueorfalse']['value'];
+        error_log(print_r($values, true));
+        if (isset($values['trueorfalse']['value'])) {
+            $answer_args['meta_input']['trueorfalse'] = $values['trueorfalse']['value'];
         }
-
 
         // Create user if enabled.
         if (!$editing && !is_user_logged_in() && ap_opt('create_account')) {
@@ -709,7 +720,7 @@ class AP_Form_Hooks
                         'success' => false,
                         'snackbar' => array(
                             'message' => sprintf(
-                            // Translators: placeholder contain error message.
+                                // Translators: placeholder contain error message.
                                 __('Unable to post answer. Error: %s', 'anspress-question-answer'),
                                 $post_id->get_error_message()
                             ),
@@ -913,7 +924,7 @@ class AP_Form_Hooks
                     'success' => false,
                     'snackbar' => array(
                         'message' => sprintf(
-                        // Translators: %s contain post type name.
+                            // Translators: %s contain post type name.
                             __('Commenting is not allowed on draft, pending or deleted %s', 'anspress-question-answer'),
                             $type
                         ),
@@ -973,7 +984,7 @@ class AP_Form_Hooks
                 'action' => 'new-comment',
                 'commentsCount' => array(
                     'text' => sprintf(
-                    // Translators: %d contains count of comments.
+                        // Translators: %d contains count of comments.
                         _n('%d Comment', '%d Comments', $count['all'], 'anspress-question-answer'),
                         $count['all']
                     ),

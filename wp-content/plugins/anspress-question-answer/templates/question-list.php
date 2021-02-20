@@ -10,28 +10,28 @@
  * @package AnsPress
  */
 ?>
-<?php if ( ! get_query_var( 'ap_hide_list_head' ) ) : ?>
-	<?php ap_get_template_part( 'list-head' ); ?>
-<?php endif; ?>
+<?php if (!get_query_var('ap_hide_list_head')): ?>
+	<?php ap_get_template_part('list-head');?>
+<?php endif;?>
 
-<?php if ( ap_have_questions() ) : ?>
+<?php if (ap_have_questions()): ?>
 
 	<div class="ap-questions">
 		<?php
-			/* Start the Loop */
-		while ( ap_have_questions() ) :
-			ap_the_question();
-			ap_get_template_part( 'question-list-item' );
-			endwhile;
-		?>
+/* Start the Loop */
+while (ap_have_questions()):
+    ap_the_question();
+    ap_get_template_part('question-list-item');
+endwhile;
+?>
 	</div>
-	<?php ap_questions_the_pagination(); ?>
+	<?php ap_questions_the_pagination();?>
 
-<?php else : ?>
+<?php else: ?>
 
 	<p class="ap-no-questions">
-		<?php esc_attr_e( 'There are no saying matching your query or you do not have permission to read them.', 'anspress-question-answer' ); ?>
+		<?php esc_attr_e('There are no prediction matching your query or you do not have permission to read them.', 'anspress-question-answer');?>
 	</p>
 
-	<?php ap_get_template_part( 'login-signup' ); ?>
-<?php endif; ?>
+	<?php ap_get_template_part('login-signup');?>
+<?php endif;?>
