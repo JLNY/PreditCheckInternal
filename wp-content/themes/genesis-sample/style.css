@@ -954,6 +954,10 @@ th:first-child {
   margin-bottom: 10px;
 }
 
+.entry-header h2.entry-title {
+  display: none;
+}
+
 .entry-title a,
 .sidebar .widget-title a {
   color: #333;
@@ -1955,6 +1959,10 @@ p.entry-meta {
   .entry-comments,
   .entry-pings {
     margin-bottom: 60px;
+  }
+
+  .archive-description {
+    display: none;
   }
 
   /* Footer Widgets
