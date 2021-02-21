@@ -1082,6 +1082,14 @@ img.alignright,
   text-align: center;
 }
 
+.ap-widget-inner .ap-question-title {
+  display: block;
+}
+
+.ap-widget-inner .ap-question-item {
+  border-bottom: 1px solid lightblue;
+}
+
 /* Featured Content
 --------------------------------------------- */
 
