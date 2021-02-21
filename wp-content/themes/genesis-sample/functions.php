@@ -416,7 +416,7 @@ function generate_top_verification_feed()
 
     $top_verification_posts = get_posts(
         array(
-            'post_type' => 'answer',
+            'post_type' => array('question', 'answer'),
             'posts_per_page' => 10,
             'orderby' => 'date',
             'post_status' => 'publish',
@@ -495,7 +495,7 @@ function wp_infinitepaginate()
     //     $arg = array('s' => $value, 'paged' => $paged, 'post_status' => 'publish');
     // } else {
     $arg = array(
-        'post_type' => 'answer',
+        'post_type' => array('question', 'answer'),
         'posts_per_page' => 10,
         'orderby' => 'date',
         'paged' => $paged,
@@ -549,9 +549,19 @@ function wp_load_infinitescroll_js()
 }
 add_action('wp_footer', 'wp_load_infinitescroll_js');
 
-function get_people_from_verification($verification_post)
+function get_people_from_predic_verific($post)
 {
-    $prediction = get_post(wp_get_post_parent_id($verification_post));
+    if ($post->post_type === 'answer') {
+        $prediction = get_post(wp_get_post_parent_id($post));
+    } else if ($post->post_type === 'question') {
+        $prediction = get_post($post);
+    } else {
+        genesis_markup([
+            'open' => '<div>Woops',
+            'close' => '</div>',
+            'echo' => true,
+        ]);
+    }
     $cats = wp_get_post_terms($prediction->ID, 'question_category');
     $taxos = array_filter($cats, function ($v, $k) {
         return $v->category_parent == 0;
@@ -582,9 +592,20 @@ function get_prediction_content_from_verification($verification_post)
     //return $prediction->post_content;
 }
 
-function get_people_image_from_verification($verification_post)
+function get_people_image_from_predic_verific($post)
 {
-    $prediction = get_post(wp_get_post_parent_id($verification_post));
+    if ($post->post_type === 'answer') {
+        $prediction = get_post(wp_get_post_parent_id($post));
+    } else if ($post->post_type === 'question') {
+        $prediction = get_post($post);
+    } else {
+        genesis_markup([
+            'open' => '<div>Woops',
+            'close' => '</div>',
+            'echo' => true,
+        ]);
+    }
+
     $cats = wp_get_post_terms($prediction->ID, 'question_category');
     $taxos = array_filter($cats, function ($v, $k) {
         return $v->category_parent == 0;
@@ -623,6 +644,49 @@ function get_verification_trueorfalse_from_verification($verification_post)
     }
     $verification_trueorfalse = $verification_trueorfalse[0];
     return ucwords($verification_trueorfalse);
+}
+
+function get_verificaiton_section_for_newsfeed($post)
+{
+    if ($post->post_type != "answer") {
+        return null;
+    }
+
+    $trueorfalse_markup = genesis_markup([
+        'open' => sprintf("<div %s>%s", genesis_attr('verification-trueorfalse'), get_verification_trueorfalse_from_verification($post)),
+        'close' => '</div>',
+        'echo' => false,
+    ]);
+
+    $verification_middle_part_markup = genesis_markup([
+        'open' => '<span>&nbsp;as verified by&nbsp;',
+        'close' => '</span>',
+        'echo' => false,
+    ]);
+
+    $verification_author_markup = genesis_markup([
+        'open' => sprintf("<div %s>%s", genesis_attr('verification-author'), get_the_author_meta('display_name', $post->post_author)),
+        'close' => '</div>',
+        'echo' => false,
+    ]);
+
+    $verification_topline_markup = genesis_markup([
+        'open' => sprintf("<div %s>%s", genesis_attr('verification-topline'), $trueorfalse_markup . $verification_middle_part_markup . $verification_author_markup),
+        'close' => '</div>',
+        'echo' => false,
+    ]);
+
+    $verification_content_markup = genesis_markup([
+        'open' => sprintf('<div %s>%s', genesis_attr('verification-content'), apply_filters('the_content', get_the_content($post = $post))),
+        'close' => '</div>',
+        'echo' => false,
+    ]);
+
+    genesis_markup([
+        'open' => sprintf("<div %s>%s", genesis_attr('verification'), $verification_topline_markup . $verification_content_markup),
+        'close' => '</div>',
+        'echo' => true,
+    ]);
 }
 
 add_action('wp_footer', 'genesis_bottom_menu', 13);
