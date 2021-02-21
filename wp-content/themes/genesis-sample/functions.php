@@ -575,6 +575,22 @@ function get_people_from_predic_verific($post)
     //return $people->name;
 }
 
+function get_newsfeed_label_predic_verific($post)
+{
+    if ($post->post_type == "answer") {
+        $label = "Verified Prediction";
+    } elseif ($post->post_type == "question") {
+        $label = "New Prediction";
+    } else {
+        $label = "News";
+    }
+    genesis_markup([
+        'open' => sprintf("<div %s>%s", genesis_attr('newsfeed_label_predic_or_verific'), $label),
+        'close' => '</div>',
+        'echo' => true,
+    ]);
+}
+
 function get_prediction_title_from_verification($verification_post)
 {
     $prediction = get_post(wp_get_post_parent_id($verification_post));
