@@ -2587,19 +2587,21 @@ function ap_entityscore_agg_cron()
         $entity_score = -1;
         if (count($questions) !== 0) {
             $entity_score = 0;
+            $question_count = 0;
             foreach ($questions as $que) {
                 // error_log(sprintf('current question: %d', $que->ID));
                 $answers = ap_get_answers(['question_id' => $que->ID])->get_answers();
                 // error_log(sprintf('number of answers: %d', count($answers)));
                 if (count($answers) !== 0) {
+                    $question_count += 1;
                     $verification_correct = 0;
                     foreach ($answers as $ans) {
                         $net_vote = ap_get_votes_net($ans);
                         $trueorfalse = ap_get_post_field('trueorfalse', $ans);
                         if ($trueorfalse === 'true') {
-                            $verification_correct += 1 * ($net_vote >= 0 ? 1 : -1);
+                            $verification_correct += 1 * ($net_vote >= 0 ? 1 : 0);
                         } else if ($trueorfalse === 'false') {
-                            $verification_correct -= 1 * ($net_vote >= 0 ? 1 : -1);
+                            $verification_correct -= 1 * ($net_vote >= 0 ? 0 : -1);
                         }
                     }
                     // error_log(sprintf('verification corrent: %d', $verification_correct));
@@ -2607,10 +2609,10 @@ function ap_entityscore_agg_cron()
                 }
             }
             // error_log(sprintf('entity score: %d', $entity_score));
-            $entity_score = $entity_score / count($questions);
+            $entity_score = $entity_score / $question_count;
             // error_log(sprintf('entity score percent: %d', $entity_score));
         }
 
-        update_field('entity_score', $entity_score == -1 ? 0 : ((int) ($entity_score * 10000))/100, $cat);
+        update_field('entity_score', $entity_score == -1 ? 0 : ((int) ($entity_score * 10000)) / 100, $cat);
     }
 }
