@@ -802,6 +802,15 @@ th:first-child {
   font-size: 16px;
 }
 
+.newsfeed_label_predic_or_verific {
+  background-color: #e5e5e5;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #7e8f99;
+  width: fit-content;
+  padding: 0 6px 0 6px;
+}
+
 .prediction-content img {
   max-height: 300px;
   width: 80%;
@@ -945,6 +954,10 @@ th:first-child {
   margin-bottom: 10px;
 }
 
+.entry-header h2.entry-title {
+  display: none;
+}
+
 .entry-title a,
 .sidebar .widget-title a {
   color: #333;
@@ -1071,6 +1084,14 @@ img.alignright,
 .widget_calendar td,
 .widget_calendar th {
   text-align: center;
+}
+
+.ap-widget-inner .ap-question-title {
+  display: block;
+}
+
+.ap-widget-inner .ap-question-item {
+  border-bottom: 1px solid lightblue;
 }
 
 /* Featured Content
@@ -1946,6 +1967,10 @@ p.entry-meta {
   .entry-comments,
   .entry-pings {
     margin-bottom: 60px;
+  }
+
+  .archive-description {
+    display: none;
   }
 
   /* Footer Widgets

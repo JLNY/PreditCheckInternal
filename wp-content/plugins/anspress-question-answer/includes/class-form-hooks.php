@@ -81,7 +81,7 @@ class AP_Form_Hooks
             'subtype' => 'datetime-local',
             'order' => 2,
             'label' => __('When to verify?', 'anspress-question-answer'),
-            'desc' => __('Please specify a date when this prediction can be verified.', 'anspress-question-answer'),
+            'desc' => __('Please specify a date when this prediction can be verified. If you are posting a claim, please mark When to verify as now.', 'anspress-question-answer'),
         );
 
         $form['fields']['prediction_time'] = array(
