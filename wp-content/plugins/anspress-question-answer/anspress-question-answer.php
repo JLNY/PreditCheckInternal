@@ -463,6 +463,8 @@ if ( ! class_exists( 'AnsPress' ) ) {
 			foreach ( $this->actions as $hook ) {
 				add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 			}
+
+            add_action( 'ap_entityscore_agg_cron', 'ap_entityscore_agg_cron' );
 		}
 
 		/**
