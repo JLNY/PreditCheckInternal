@@ -331,6 +331,26 @@ function ap_category_have_image($term_id)
     return false;
 }
 
+function ap_get_category_count($question_category)
+{
+    if (count(get_term_children($question_category->term_id, 'question_category')) !== 0) {
+        return null;
+    }
+    $category_number_content = sprintf(
+        _n('%d Prediction', '%d Predictions', (int) $question_category->count, 'anspress-question-answer'),
+        (int) $question_category->count
+    );
+    echo '<span class="ap-tax-count">' . $category_number_content . '</span>';
+}
+
+function ap_get_category_entity_score($question_category)
+{
+    if (count(get_term_children($question_category->term_id, 'question_category')) !== 0) {
+        return null;
+    }
+    echo '<div class="ap-tax-entity-score">' . get_field('entity_score', $question_category) . '% correctness</div>';
+}
+
 /**
  * Output tags html.
  *
