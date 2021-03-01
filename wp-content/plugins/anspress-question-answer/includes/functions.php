@@ -125,7 +125,6 @@ function ap_get_theme_url($file, $plugin = false, $ver = true)
     return apply_filters('ap_theme_url', $template_url . (true === $ver ? '?v=' . AP_VERSION : ''));
 }
 
-
 /**
  * Check if current page is AnsPress. Also check if showing question or
  * answer page in BuddyPress.
@@ -216,7 +215,7 @@ function is_ask()
 function get_question_id()
 {
     if (is_question() && get_query_var('question_id')) {
-        return (int)get_query_var('question_id');
+        return (int) get_query_var('question_id');
     }
 
     if (is_question()) {
@@ -262,7 +261,7 @@ function ap_human_time($time, $unix = true, $show_full_date = 604800, $format = 
     if ($time) {
         if ($show_full_date + $time > current_time('timestamp', true)) {
             return sprintf(
-            /* translators: %s: human-readable time difference */
+                /* translators: %s: human-readable time difference */
                 __('%s ago', 'anspress-question-answer'),
                 human_time_diff($time, current_time('timestamp', true))
             );
@@ -305,7 +304,6 @@ function ap_answers_link($question_id = false)
     }
     return get_permalink($question_id) . '#answers';
 }
-
 
 /**
  * Return edit link for question and answer.
@@ -350,7 +348,7 @@ function ap_truncate_chars($text, $limit = 40, $ellipsis = '...')
     $text = strip_tags($text);
     $text = str_replace(array("\r\n", "\r", "\n", "\t"), ' ', $text);
     if (strlen($text) > $limit) {
-        $endpos = strpos($text, ' ', (string)$limit);
+        $endpos = strpos($text, ' ', (string) $limit);
 
         if (false !== $endpos) {
             $text = trim(substr($text, 0, $endpos)) . $ellipsis;
@@ -756,7 +754,7 @@ function ap_get_link_to($sub)
                 $args = '/';
 
                 if (!empty($sub)) {
-                    foreach ((array)$sub as $s) {
+                    foreach ((array) $sub as $s) {
                         $args .= $s . '/';
                     }
                 }
@@ -828,8 +826,8 @@ function ap_total_posts_count($post_type = 'question', $ap_type = false, $user_i
 
     $where = "WHERE p.post_status NOT IN ('trash', 'draft') AND $type $meta";
 
-    if (false !== $user_id && (int)$user_id > 0) {
-        $where .= ' AND p.post_author = ' . (int)$user_id;
+    if (false !== $user_id && (int) $user_id > 0) {
+        $where .= ' AND p.post_author = ' . (int) $user_id;
     }
 
     $where = apply_filters('ap_total_posts_count', $where);
@@ -838,21 +836,20 @@ function ap_total_posts_count($post_type = 'question', $ap_type = false, $user_i
     $count = $wpdb->get_results($query, ARRAY_A); // @codingStandardsIgnoreLine
     $counts = array();
 
-    foreach ((array)get_post_stati() as $state) {
+    foreach ((array) get_post_stati() as $state) {
         $counts[$state] = 0;
     }
 
     $counts['total'] = 0;
 
-
     if (!empty($count)) {
         foreach ($count as $row) {
-            $counts[$row['post_status']] = (int)$row['count'];
-            $counts['total'] += (int)$row['count'];
+            $counts[$row['post_status']] = (int) $row['count'];
+            $counts['total'] += (int) $row['count'];
         }
     }
 
-    return (object)$counts;
+    return (object) $counts;
 }
 
 /**
@@ -884,12 +881,12 @@ function ap_total_solved_questions($type = 'int')
         $counts[$state] = 0;
     }
 
-    foreach ((array)$count as $row) {
-        $counts[$row['post_status']] = (int)$row['count'];
-        $counts['total'] += (int)$row['count'];
+    foreach ((array) $count as $row) {
+        $counts[$row['post_status']] = (int) $row['count'];
+        $counts['total'] += (int) $row['count'];
     }
 
-    $counts = (object)$counts;
+    $counts = (object) $counts;
     if ('int' === $type) {
         return $counts->publish + $counts->private_post;
     }
@@ -1157,7 +1154,6 @@ function ap_append_table_names()
 
 ap_append_table_names();
 
-
 /**
  * Check if $_REQUEST var exists and get value. If not return default.
  *
@@ -1195,7 +1191,7 @@ function ap_get_current_list_filters($filter = null)
         $filters = [];
     }
 
-    foreach ((array)$filters as $k) {
+    foreach ((array) $filters as $k) {
         $val = ap_isset_post_value($k);
 
         if (!empty($val)) {
@@ -1300,7 +1296,7 @@ function ap_find_duplicate_post($content, $post_type = 'question', $question_id 
 
     $question_q = false !== $question_id ? $wpdb->prepare(' AND post_parent= %d', $question_id) : '';
 
-    $var = (int)$wpdb->get_var($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_content = %s AND post_type = %s {$question_q} LIMIT 1", $content, $post_type)); // @codingStandardsIgnoreLine
+    $var = (int) $wpdb->get_var($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_content = %s AND post_type = %s {$question_q} LIMIT 1", $content, $post_type)); // @codingStandardsIgnoreLine
 
     if ($var > 0) {
         return $var;
@@ -1323,7 +1319,7 @@ function ap_disable_question_suggestion()
      * @param boolean $enable Default is false.
      * @since  3.0.0
      */
-    return (bool)apply_filters('ap_disable_question_suggestion', false);
+    return (bool) apply_filters('ap_disable_question_suggestion', false);
 }
 
 /**
@@ -1341,13 +1337,12 @@ function ap_post_author_pre_fetch($ids)
         ]
     );
 
-    foreach ((array)$users as $user) {
+    foreach ((array) $users as $user) {
         update_user_caches($user);
     }
 
     update_meta_cache('user', $ids);
 }
-
 
 /**
  * Activity type to human readable title.
@@ -1740,7 +1735,7 @@ function ap_get_addons()
     $addons = apply_filters('ap_addons', $addons);
 
     $valid_addons = [];
-    foreach ((array)$addons as $k => $addon) {
+    foreach ((array) $addons as $k => $addon) {
         $path = ANSPRESS_ADDONS_DIR . DS . basename($k, '.php') . DS . $k;
         $path2 = ANSPRESS_ADDONS_DIR . DS . $k;
 
@@ -2089,7 +2084,7 @@ function ap_set_in_array(&$arr, $path, $val)
     $path = is_string($path) ? explode('.', $path) : $path;
     $loc = &$arr;
 
-    foreach ((array)$path as $step) {
+    foreach ((array) $path as $step) {
         $loc = &$loc[$step];
     }
 
@@ -2282,7 +2277,7 @@ function ap_answer_form($question_id, $editing = false)
             ),
             array(
                 'name' => 'question_id',
-                'value' => (int)$question_id,
+                'value' => (int) $question_id,
             ),
         ),
     );
@@ -2310,7 +2305,7 @@ function ap_answer_form($question_id, $editing = false)
 
         $args['hidden_fields'][] = array(
             'name' => 'post_id',
-            'value' => (int)$editing_id,
+            'value' => (int) $editing_id,
         );
 
     } elseif (!empty($session_values)) {
@@ -2574,6 +2569,10 @@ function ap_entityscore_agg_cron()
 {
     $categories = get_terms(array('taxonomy' => 'question_category'));
     foreach ($categories as $cat) {
+        // error_log(sprintf('current cat: %s', $cat->name));
+        if (count(get_term_children($cat->term_id, 'question_category')) !== 0) {
+            continue;
+        }
         $question_args = array(
             'tax_query' => array(
                 array(
@@ -2584,22 +2583,34 @@ function ap_entityscore_agg_cron()
             ),
         );
         $questions = ap_get_questions($question_args)->get_questions();
-        $base_score = 80;
-        foreach ($questions as $que) {
-            $answers = ap_get_answers(['question_id' => $que->ID])->get_answers();
-            if (count($answers) !== 0) {
-                $verification_correct = 0;
-                foreach ($answers as $ans) {
-                    $trueorfalse = ap_get_post_field('trueorfalse', $ans);
-                    if ($trueorfalse === 'true') {
-                        $verification_correct += 1;
-                    } else if ($trueorfalse === 'false') {
-                        $verification_correct -= 1;
+        // error_log(sprintf('number of questions: %d', count($questions)));
+        $entity_score = -1;
+        if (count($questions) !== 0) {
+            $entity_score = 0;
+            foreach ($questions as $que) {
+                // error_log(sprintf('current question: %d', $que->ID));
+                $answers = ap_get_answers(['question_id' => $que->ID])->get_answers();
+                // error_log(sprintf('number of answers: %d', count($answers)));
+                if (count($answers) !== 0) {
+                    $verification_correct = 0;
+                    foreach ($answers as $ans) {
+                        $net_vote = ap_get_votes_net($ans);
+                        $trueorfalse = ap_get_post_field('trueorfalse', $ans);
+                        if ($trueorfalse === 'true') {
+                            $verification_correct += 1 * ($net_vote >= 0 ? 1 : -1);
+                        } else if ($trueorfalse === 'false') {
+                            $verification_correct -= 1 * ($net_vote >= 0 ? 1 : -1);
+                        }
                     }
+                    // error_log(sprintf('verification corrent: %d', $verification_correct));
+                    $entity_score += $verification_correct / count($answers);
                 }
-                $base_score += $verification_correct / count($answers);
             }
+            // error_log(sprintf('entity score: %d', $entity_score));
+            $entity_score = $entity_score / count($questions);
+            // error_log(sprintf('entity score percent: %d', $entity_score));
         }
-        update_field('entity_score', $base_score, $cat);
+
+        update_field('entity_score', $entity_score == -1 ? 0 : $entity_score * 100, $cat);
     }
 }
