@@ -40,6 +40,7 @@ $icon = ap_get_category_icon($question_category->term_id);
 					<?php ap_get_category_count($question_category)?>
 				</div>
 
+				<?php ap_get_category_entity_score($question_category)?>
 
 				<?php if ('' !== $question_category->description): ?>
 					<p class="ap-taxo-description">

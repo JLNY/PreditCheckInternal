@@ -10,7 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: -20px;
-    >li {
+    > li {
       margin: 0;
       padding: 20px;
       flex-shrink: 0;
@@ -116,6 +116,11 @@
       padding: 4px 7px;
       vertical-align: super;
     }
+    .ap-tax-entity-score {
+      color: black;
+      font-weight: bold;
+      //background-color: lightblue;
+    }
     .ap-category-icon {
       width: 50px;
       height: 50px;
@@ -173,7 +178,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  >li {
+  > li {
     border-bottom: 1px solid #f1f1f1;
     margin: 0;
     padding: 7px 0;
@@ -199,7 +204,7 @@
       position: relative;
       border-radius: 2px;
       .ap-category-icon {
-        color: rgba(255, 255, 255, .97);
+        color: rgba(255, 255, 255, 0.97);
         display: block;
         font-size: 16px;
         text-align: center;

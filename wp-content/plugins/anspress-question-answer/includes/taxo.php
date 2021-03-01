@@ -343,6 +343,14 @@ function ap_get_category_count($question_category)
     echo '<span class="ap-tax-count">' . $category_number_content . '</span>';
 }
 
+function ap_get_category_entity_score($question_category)
+{
+    if (count(get_term_children($question_category->term_id, 'question_category')) !== 0) {
+        return null;
+    }
+    echo '<div class="ap-tax-entity-score">' . get_field('entity_score', $question_category) . '% correctness</div>';
+}
+
 /**
  * Output tags html.
  *
