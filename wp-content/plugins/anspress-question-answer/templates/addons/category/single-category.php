@@ -37,14 +37,7 @@ $icon = ap_get_category_icon($question_category->term_id);
 					<a class="entry-title" href="<?php echo get_category_link($question_category); ?>">
 						<?php echo esc_html($question_category->name); ?>
 					</a>
-					<span class="ap-tax-count">
-						<?php
-printf(
-    _n('%d Prediction', '%d Predictions', (int) $question_category->count, 'anspress-question-answer'),
-    (int) $question_category->count
-);
-?>
-					</span>
+					<?php ap_get_category_count($question_category)?>
 				</div>
 
 
