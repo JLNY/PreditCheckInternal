@@ -2611,6 +2611,6 @@ function ap_entityscore_agg_cron()
             // error_log(sprintf('entity score percent: %d', $entity_score));
         }
 
-        update_field('entity_score', $entity_score == -1 ? 0 : $entity_score * 100, $cat);
+        update_field('entity_score', $entity_score == -1 ? 0 : ((int) ($entity_score * 10000))/100, $cat);
     }
 }
