@@ -348,9 +348,17 @@ function generate_hot_people_section()
                         ],
                     )
                 );
+                $cat_score = get_field('entity_score', $sub_cat);
+                if ($cat_score <= 40) {
+                    $cat_score_color = "crimson";
+                } elseif ($cat_score <= 75) {
+                    $cat_score_color = "coral";
+                } else {
+                    $cat_score_color = "chartreuse";
+                }
 
                 genesis_markup([
-                    'open' => sprintf("<div %s><a href=\"%s\">", genesis_attr('hot-people-tile'), "/questions/categories/" . $sub_cat->slug),
+                    'open' => sprintf("<div %s><div %s><a href=\"%s\">", genesis_attr('hot-people-tile'), genesis_attr('hot-people-tile-img'), "/questions/categories/" . $sub_cat->slug),
                     'echo' => true,
                 ]);
 
@@ -359,9 +367,19 @@ function generate_hot_people_section()
                     'close' => '</img>',
                     'echo' => true,
                 ]);
-
                 genesis_markup([
                     'close' => '</a></div>',
+                    'echo' => true,
+                ]);
+
+                genesis_markup([
+                    'open' => sprintf('<div %s style="height:%d%%; background:%s">', genesis_attr('hot-people-tile-score-bar'), $cat_score, $cat_score_color),
+                    'close' => '</div>',
+                    'echo' => true,
+                ]);
+
+                genesis_markup([
+                    'close' => '</div>',
                     'echo' => true,
                 ]);
                 //}
